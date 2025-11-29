@@ -1,0 +1,316 @@
+@prefix : <http://example.org/marvel#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://example.org/marvel#> .
+
+<http://example.org/marvel_ru> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2003/11/swrl#varName
+swrl:varName rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/marvel#имеетОриентацию
+:имеетОриентацию rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Персонаж ;
+                 rdfs:range :МоральнаяОриентация ;
+                 rdfs:label "имеет моральную ориентацию"@ru .
+
+
+###  http://example.org/marvel#имеетСпособность
+:имеетСпособность rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Персонаж ;
+                  rdfs:range :Способность ;
+                  rdfs:label "имеет способность"@ru .
+
+
+###  http://example.org/marvel#состоитВОрганизации
+:состоитВОрганизации rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Персонаж ;
+                     rdfs:range :Организация ;
+                     rdfs:label "состоит в организации"@ru .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/marvel#Геройская
+:Геройская rdf:type owl:Class ;
+           rdfs:subClassOf :МоральнаяОриентация .
+
+
+###  http://example.org/marvel#Злодейская
+:Злодейская rdf:type owl:Class ;
+            rdfs:subClassOf :МоральнаяОриентация .
+
+
+###  http://example.org/marvel#КандидатВМстители
+:КандидатВМстители rdf:type owl:Class ;
+                   rdfs:comment "Персонаж, который по своим характеристикам подходит для вступления в команду Мстителей."@ru ;
+                   rdfs:label "Кандидат в Мстители"@ru .
+
+
+###  http://example.org/marvel#МоральнаяОриентация
+:МоральнаяОриентация rdf:type owl:Class ;
+                     rdfs:label "Моральная ориентация"@ru .
+
+
+###  http://example.org/marvel#Мстители
+:Мстители rdf:type owl:Class ;
+          rdfs:subClassOf :Организация .
+
+
+###  http://example.org/marvel#Организация
+:Организация rdf:type owl:Class ;
+             rdfs:label "Организация"@ru .
+
+
+###  http://example.org/marvel#Персонаж
+:Персонаж rdf:type owl:Class ;
+          rdfs:comment "Любой персонаж киновселенной Marvel."@ru ;
+          rdfs:label "Персонаж"@ru .
+
+
+###  http://example.org/marvel#Полёт
+:Полёт rdf:type owl:Class ;
+       rdfs:subClassOf :Способность .
+
+
+###  http://example.org/marvel#Сверхчеловек
+:Сверхчеловек rdf:type owl:Class ;
+              rdfs:subClassOf :Персонаж ;
+              rdfs:comment "Персонаж, обладающий сверхчеловеческими способностями."@ru ;
+              rdfs:label "Сверхчеловек"@ru .
+
+
+###  http://example.org/marvel#Сила
+:Сила rdf:type owl:Class ;
+      rdfs:subClassOf :Способность .
+
+
+###  http://example.org/marvel#Способность
+:Способность rdf:type owl:Class ;
+             rdfs:label "Способность"@ru .
+
+
+###  http://example.org/marvel#Человек
+:Человек rdf:type owl:Class ;
+         rdfs:subClassOf :Персонаж ;
+         rdfs:comment "Персонаж-человек без природных сверхспособностей."@ru ;
+         rdfs:label "Человек"@ru .
+
+
+###  http://example.org/marvel#ЩИТ
+:ЩИТ rdf:type owl:Class ;
+     rdfs:subClassOf :Организация ;
+     rdfs:label "Щ.И.Т."@ru .
+
+
+###  http://example.org/marvel#ЭнергетическаяАтака
+:ЭнергетическаяАтака rdf:type owl:Class ;
+                     rdfs:subClassOf :Способность .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/marvel#Геройская
+:Геройская rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/marvel#Злодейская
+:Злодейская rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/marvel#Мстители
+:Мстители rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/marvel#Наташа_Романова
+:Наташа_Романова rdf:type owl:NamedIndividual ,
+                          :Человек ;
+                 :имеетОриентацию :Геройская ;
+                 :имеетСпособность :Сила ;
+                 :состоитВОрганизации :Мстители ;
+                 rdfs:label "Наташа Романова (Чёрная вдова)"@ru .
+
+
+###  http://example.org/marvel#Полёт
+:Полёт rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/marvel#Сила
+:Сила rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/marvel#Стив_Роджерс
+:Стив_Роджерс rdf:type owl:NamedIndividual ,
+                       :Человек ;
+              :имеетОриентацию :Геройская ;
+              :имеетСпособность :Сила ;
+              :состоитВОрганизации :Мстители ;
+              rdfs:label "Стив Роджерс (Капитан Америка)"@ru .
+
+
+###  http://example.org/marvel#Танос
+:Танос rdf:type owl:NamedIndividual ,
+                :Сверхчеловек ;
+       :имеетОриентацию :Злодейская ;
+       :имеетСпособность :Сила ,
+                         :ЭнергетическаяАтака ;
+       rdfs:label "Танос"@ru .
+
+
+###  http://example.org/marvel#Тони_Старк
+:Тони_Старк rdf:type owl:NamedIndividual ,
+                     :Человек ;
+            :имеетОриентацию :Геройская ;
+            :имеетСпособность :Полёт ,
+                              :ЭнергетическаяАтака ;
+            :состоитВОрганизации :Мстители ;
+            rdfs:label "Тони Старк (Железный человек)"@ru .
+
+
+###  http://example.org/marvel#ЭнергетическаяАтака
+:ЭнергетическаяАтака rdf:type owl:NamedIndividual .
+
+
+[ swrl:varName "p"
+] .
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Геройская rdfs:label "Геройская"@ru .
+
+
+:Злодейская rdfs:label "Злодейская"@ru .
+
+
+:Мстители rdfs:label "Мстители"@ru .
+
+
+:Полёт rdfs:label "Полёт"@ru .
+
+
+:Сила rdfs:label "Сверхсила"@ru .
+
+
+:ЭнергетическаяАтака rdfs:label "Энергетическая атака"@ru .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+_:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер rdf:type swrl:Variable .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Персонаж ;
+                           swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :имеетОриентацию ;
+                                      swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер ;
+                                      swrl:argument2 :Геройская
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :имеетСпособность ;
+                                                 swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер ;
+                                                 swrl:argument2 :Сила
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КандидатВМстители ;
+                           swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Персонаж ;
+                           swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :имеетОриентацию ;
+                                      swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер ;
+                                      swrl:argument2 :Геройская
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :имеетСпособность ;
+                                                 swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер ;
+                                                 swrl:argument2 :Полёт
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КандидатВМстители ;
+                           swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Персонаж ;
+                           swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :имеетОриентацию ;
+                                      swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер ;
+                                      swrl:argument2 :Геройская
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :имеетСпособность ;
+                                                 swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер ;
+                                                 swrl:argument2 :ЭнергетическаяАтака
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КандидатВМстители ;
+                           swrl:argument1 _:genid-nodeid-genid-6d6feee76f9b43d5a9923c3e5127e2cc-пер
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
